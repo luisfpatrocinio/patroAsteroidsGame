@@ -1,0 +1,160 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnrf0px06q2fx"]
+
+[ext_resource type="Script" path="res://Scripts/interface.gd" id="1_kxjff"]
+[ext_resource type="Theme" uid="uid://vu63k7hkn1ma" path="res://gameTheme.tres" id="2_skhue"]
+
+[node name="Interface" type="CanvasLayer"]
+script = ExtResource("1_kxjff")
+
+[node name="ConnectingMessage" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 164.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_skhue")
+theme_override_font_sizes/font_size = 48
+text = "Conectando..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Login" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="BoxContainer" parent="Login"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -155.0
+offset_right = 155.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="PlayerName" type="LineEdit" parent="Login/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 4
+focus_next = NodePath("../PlayButton")
+theme = ExtResource("2_skhue")
+placeholder_text = "Digite seu nome"
+alignment = 1
+deselect_on_focus_loss_enabled = false
+
+[node name="PlayButton" type="Button" parent="Login/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_skhue")
+text = "INICIAR JOGO"
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.470588)
+
+[node name="ConnectingMessage" type="Label" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 164.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_skhue")
+theme_override_font_sizes/font_size = 48
+text = "Fim de jogo!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PlayerName" type="Label" parent="BottomBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 154.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme = ExtResource("2_skhue")
+text = "Patrocinio - General"
+
+[node name="LivesLabel" type="Label" parent="BottomBar"]
+layout_mode = 2
+offset_left = 599.0
+offset_top = 12.0
+offset_right = 674.0
+offset_bottom = 36.0
+grow_vertical = 2
+theme = ExtResource("2_skhue")
+text = "Vidas: N"
+
+[node name="ScoreLabel" type="Label" parent="BottomBar"]
+layout_mode = 2
+offset_left = 678.0
+offset_top = 12.0
+offset_right = 795.0
+offset_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_skhue")
+text = "Score: 99999"
+horizontal_alignment = 2
+
+[node name="HighScoreLabel" type="Label" parent="BottomBar"]
+layout_mode = 2
+offset_left = 799.0
+offset_top = 12.0
+offset_right = 960.0
+offset_bottom = 36.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("2_skhue")
+text = "Highscore: 99999"
+horizontal_alignment = 2
+
+[connection signal="pressed" from="Login/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

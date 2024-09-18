@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bttk8tkdjbiou"]
+
+[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_7nbgw"]
+[ext_resource type="Texture2D" uid="uid://4v4vl7x627wh" path="res://Retina/effect_yellow.png" id="2_mp8pf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_12421"]
+radius = 2.0
+
+[sub_resource type="Curve" id="Curve_ok2uo"]
+max_value = 3.0
+_data = [Vector2(0.617977, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8ingw"]
+offsets = PackedFloat32Array(0, 0.106667, 0.986667)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_7nbgw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_12421")
+
+[node name="EffectYellow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+rotation = 1.5708
+scale = Vector2(0.1, 1)
+texture = ExtResource("2_mp8pf")
+centered = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 32
+lifetime = 0.25
+randomness = 0.5
+emission_shape = 1
+emission_sphere_radius = 2.0
+gravity = Vector2(0, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_ok2uo")
+color_ramp = SubResource("Gradient_8ingw")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://0ius0myu7pw0"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_iu5ws"]
+[ext_resource type="Texture2D" uid="uid://dtxhuwkcscp5" path="res://Retina/ship_A.png" id="1_tvn10"]
+[ext_resource type="Texture2D" uid="uid://4v4vl7x627wh" path="res://Retina/effect_yellow.png" id="2_3gfas"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsrjo"]
+radius = 24.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_iu5ws")
+
+[node name="TrailEffect" type="Sprite2D" parent="."]
+position = Vector2(-72, 0)
+rotation = 1.5708
+texture = ExtResource("2_3gfas")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_tvn10")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rsrjo")
+
+[node name="PlayerHurtBox" type="Area2D" parent="."]
+
+[node name="AreaCollisionShape" type="CollisionShape2D" parent="PlayerHurtBox"]
+shape = SubResource("CircleShape2D_rsrjo")
+
+[connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_area_2d_area_entered"]

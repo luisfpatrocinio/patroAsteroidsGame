@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://vu63k7hkn1ma"]
+
+[ext_resource type="FontFile" uid="uid://blwuo3puhejk4" path="res://Assets/Softball Gold.ttf" id="1_s6jrm"]
+
+[resource]
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_s6jrm")
+TextEdit/colors/background_color = Color(0.945098, 0, 0, 0.792157)

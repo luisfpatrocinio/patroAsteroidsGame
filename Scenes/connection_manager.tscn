@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg32nex5rf6mw"]
+
+[ext_resource type="Script" path="res://scripts/connectionManager.gd" id="1_87f85"]
+
+[node name="ConnectionManager" type="HTTPRequest"]
+script = ExtResource("1_87f85")
+
+[connection signal="request_completed" from="." to="." method="_on_request_completed"]

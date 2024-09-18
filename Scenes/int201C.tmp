@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnrf0px06q2fx"]
+
+[ext_resource type="Script" path="res://Scripts/interface.gd" id="1_kxjff"]
+
+[sub_resource type="Theme" id="Theme_a1hcy"]
+TextEdit/colors/background_color = Color(0.945098, 0, 0, 0.792157)
+
+[node name="Interface" type="CanvasLayer"]
+script = ExtResource("1_kxjff")
+
+[node name="ConnectingMessage" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 164.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Conectando"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Login" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="BoxContainer" parent="Login"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.0
+offset_top = -155.0
+offset_right = 155.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="PlayerName" type="TextEdit" parent="Login/VBoxContainer"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_a1hcy")
+placeholder_text = "Digite seu nome"
+
+[node name="PlayButton" type="Button" parent="Login/VBoxContainer"]
+layout_mode = 2
+text = "INICIAR JOGO"
+
+[node name="LivesLabel" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Vidas: N"
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Login/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

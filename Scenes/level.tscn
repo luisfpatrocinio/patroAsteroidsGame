@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxj5j8e4xjhbm"]
+
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_5almx"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_23fr8"]
+
+[sub_resource type="Gradient" id="Gradient_ucosf"]
+offsets = PackedFloat32Array(0, 0.577922)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.470588)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_werh4"]
+gradient = SubResource("Gradient_ucosf")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_23fr8")
+
+[node name="Background" type="Node2D" parent="."]
+script = ExtResource("1_5almx")
+
+[node name="BG" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(960, 540)
+
+[node name="BackgroundRect" type="ColorRect" parent="Background/BG"]
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Furthest" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.95, 0.95)
+repeat_size = Vector2(960, 540)
+
+[node name="Far" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.75, 0.75)
+repeat_size = Vector2(960, 540)
+
+[node name="Close" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(960, 540)
+
+[node name="Closest" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(960, 540)
+
+[node name="BG2" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(960, 540)
+
+[node name="BackgroundRect" type="TextureRect" parent="Background/BG2"]
+offset_right = 960.0
+offset_bottom = 540.0
+texture = SubResource("GradientTexture2D_werh4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(472, 318)
+
+[node name="MeteorSpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Asteroids" type="Node2D" parent="."]
+
+[connection signal="timeout" from="MeteorSpawnTimer" to="." method="_on_meteor_spawn_timer_timeout"]
